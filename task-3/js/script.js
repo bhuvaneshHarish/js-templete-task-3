@@ -14,7 +14,8 @@ let boxId;
 
 addEle.addEventListener("click", function(){
 	
-	if((inpEle.value !=="" && textArea.vlaue !=="")){
+	if((inpEle.value.trim() && textArea.value.trim())){
+		console.log("hiii");
 		var main=document.createElement("div");
 		main.className = "item-box";
 		main.setAttribute("id","item-box-"+IdCount);
@@ -65,7 +66,8 @@ addEle.addEventListener("click", function(){
 
 function del(){
 	this.parentNode.remove();
-}
+	inpEle.value = '';
+	textArea.value='';
 
 //edit
 
@@ -77,6 +79,7 @@ function edit(){
 	inpEle.value = title.innerText;
 	textArea.value = para.innerText;
 	boxId = main.id;
+	addEle.disabled = true;
 }
 
 //update button
@@ -90,7 +93,7 @@ function update(){
 	
 	title.innerText = inpEle.value;
 	para.innerText = textArea.value;
-	
+	addEle.disabled = false;
 	inpEle.value = '';
 	textArea.value = '';
 }
